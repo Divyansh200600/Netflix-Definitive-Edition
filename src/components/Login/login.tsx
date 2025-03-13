@@ -57,8 +57,8 @@ export default function Login() {
   
     try {
       const url = isSignUp
-        ? "http://localhost:3001/duggu-api/auth/register"
-        : "http://localhost:3001/duggu-api/auth/login";
+        ? "https://duggu-apis.vercel.app/duggu-api/auth/register"
+        : "https://duggu-apis.vercel.app/duggu-api/auth/login";
   
       const lowerCaseEmail = form.email.toLowerCase(); // ✅ Convert to lowercase
       console.log("🔍 Sending Email:", lowerCaseEmail); // ✅ Debugging: Check in console
@@ -90,7 +90,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3001/duggu-api/auth/send-otp", {
+      const response = await axios.post("https://duggu-apis.vercel.app/duggu-api/auth/send-otp", {
         email: form.email.toLowerCase() // ✅ Converts email to lowercase
       });
 
@@ -121,7 +121,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3001/duggu-api/auth/verify-otp", {
+      const response = await axios.post("https://duggu-apis.vercel.app/duggu-api/auth/verify-otp", {
         email: form.email.toLowerCase(), // ✅ Converts email to lowercase
         otp
       });
@@ -151,7 +151,7 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/duggu-api/auth/reset-password", {
+      const response = await axios.post("https://duggu-apis.vercel.app/duggu-api/auth/reset-password", {
         email: form.email.toLowerCase(),
         otp,
         newPassword,

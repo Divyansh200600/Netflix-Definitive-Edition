@@ -16,7 +16,7 @@ const Dashboard = () => {
     const fetchUser = async () => {
       try {
         setLoading(true); 
-        const res = await axios.get(`http://localhost:3001/duggu-api/auth/user/${userId}`);
+        const res = await axios.get(`https://duggu-apis.vercel.app/duggu-api/auth/user/${userId}`);
         
         if (res.data.success) {
           setUser(res.data.user); 
