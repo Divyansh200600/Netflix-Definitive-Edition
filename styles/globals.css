@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+
+.mobile-block {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #000;
+    color: red;
+    font-size: 1.5rem;
+    flex-direction: column;
+  }
+  
+  .mobile-block h1 {
+    font-size: 3rem;
+  }
+  
+  .mobile-block p {
+    font-size: 1.2rem;
+  }
+  

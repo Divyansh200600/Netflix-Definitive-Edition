@@ -14,10 +14,16 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "firebase": "^11.4.0",
+    "framer-motion": "^12.5.0",
+    "lucide-react": "^0.479.0",
     "mongodb": "^6.14.2",
     "next": "15.2.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-tsparticles": "^2.12.2",
+    "sweetalert2": "^11.17.2",
+    "tsparticles": "^3.8.1",
+    "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
