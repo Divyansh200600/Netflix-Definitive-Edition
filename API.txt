@@ -1,0 +1,14 @@
+Here all the paths of where the API should be used
+
+Main Url--> "404 Not Found"
+
+1. src/components/login.tsx
+
+
+
+Backend Use in this project
+
+1. User Auth (Done ✅)
+2. Purchase (Razorpay)
+3. Contact Us
+4. Email Api

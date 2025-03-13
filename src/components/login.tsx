@@ -2,14 +2,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import Swal from "sweetalert2";
 import { Tv, Film, Popcorn, Clapperboard, PlayCircle, Monitor, Eye, EyeOff } from "lucide-react"; // Import icons
-
+import { useRouter } from "next/navigation";
 export default function Login() {
+    const router = useRouter(); 
   const [isSignUp, setIsSignUp] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
 
   const validatePassword = (password: string) => {
     return /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password);
@@ -36,15 +37,23 @@ export default function Login() {
       showToast("Invalid password format!", "error");
       return;
     }
+
     try {
-      const url = isSignUp ? "http://localhost:5000/auth/register" : "http://localhost:5000/auth/login";
-      await axios.post(url, form);
+      const url = isSignUp ? "http://localhost:3001/auth/register" : "http://localhost:3001/auth/login";
+      const { data } = await axios.post(url, form);
+
       showToast(isSignUp ? "Sign-Up Successful!" : "Login Successful!", "success");
-    } catch {
+
+      if (data.userId) {
+        router.push(`/dashboard/${data.userId}`);
+      }
+    } catch (error) {
       setError("Something went wrong!");
       showToast("Authentication failed!", "error");
     }
   };
+
+  
 
   const toggleForm = () => {
     setIsSignUp((prev) => !prev);
