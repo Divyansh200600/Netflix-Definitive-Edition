@@ -16,10 +16,10 @@ export default function Login() {
   const [otpSent, setOtpSent] = useState(false);
   const [otpVerified, setOtpVerified] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [serverOtp, setServerOtp] = useState("");
+
+  console.log(loading);
 
   useEffect(() => {
     const token = localStorage.getItem("token"); // or get from cookies
@@ -77,6 +77,7 @@ export default function Login() {
     } catch (error) {
       setError("Something went wrong!");
       showToast("Authentication failed!", "error");
+      console.log(error);
     }
   };
   
