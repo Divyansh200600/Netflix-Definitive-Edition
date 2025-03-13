@@ -5,31 +5,30 @@ import { Loader, LogOut, User } from "lucide-react";
 
 const Dashboard = () => {
   const router = useRouter();
-  const { userId } = router.query; // Get userId from URL
+  const { userId } = router.query; 
 
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Ensure userId is defined before fetching
     if (!userId) return;
 
     const fetchUser = async () => {
       try {
-        setLoading(true); // Set loading to true before fetching
-        const res = await axios.get(`http://localhost:3001/auth/user/${userId}`);
+        setLoading(true); 
+        const res = await axios.get(`http://localhost:3001/duggu-api/auth/user/${userId}`);
         
         if (res.data.success) {
-          setUser(res.data.user); // ✅ Set user state to the nested user object
+          setUser(res.data.user); 
         } else {
           console.error("Failed to fetch user data");
-          setUser(null); // Set to null if the fetch was not successful
+          setUser(null); 
         }
       } catch (error) {
         console.error("Error fetching user:", error);
-        setUser(null); // Set to null on error
+        setUser(null);
       } finally {
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false); 
       }
     };
 
@@ -37,8 +36,8 @@ const Dashboard = () => {
   }, [userId]);
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token
-    router.push("/login"); // Redirect to login page
+    localStorage.removeItem("token"); 
+    router.push("/"); 
   };
 
   if (loading) {
@@ -57,11 +56,11 @@ const Dashboard = () => {
         </h1>
         {user ? (
           <div>
-            <h1>Name: {user.name}</h1> {/* Access user.name directly */}
-            <p>Email: {user.email}</p> {/* Access user.email directly */}
+            <h1>Name: {user.name}</h1> 
+            <p>Email: {user.email}</p> 
           </div>
         ) : (
-          <p>User not found.</p> // Show a message if user is not found
+          <p>User not found.</p> 
         )}
         <button
           onClick={handleLogout}

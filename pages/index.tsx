@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Login from '@/src/components/login';
+import Login from '@/src/components/Login/login';
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
