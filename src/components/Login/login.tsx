@@ -54,15 +54,24 @@ export default function Login() {
       showToast("Invalid password format!", "error");
       return;
     }
-
+  
     try {
-      const url = isSignUp ? "http://localhost:3001/duggu-api/auth/register" : "http://localhost:3001/duggu-api/auth/login";
-      const { data } = await axios.post(url, form);
-
+      const url = isSignUp
+        ? "http://localhost:3001/duggu-api/auth/register"
+        : "http://localhost:3001/duggu-api/auth/login";
+  
+      const lowerCaseEmail = form.email.toLowerCase(); // ✅ Convert to lowercase
+      console.log("🔍 Sending Email:", lowerCaseEmail); // ✅ Debugging: Check in console
+  
+      const { data } = await axios.post(url, {
+        ...form,
+        email: lowerCaseEmail, 
+      });
+  
       showToast(isSignUp ? "Sign-Up Successful!" : "Login Successful!", "success");
-
+  
       if (data.userId) {
-        localStorage.setItem("token", data.token); // Store token
+        localStorage.setItem("token", data.token);
         router.push(`/home/${data.userId}`);
       }
     } catch (error) {
@@ -70,6 +79,7 @@ export default function Login() {
       showToast("Authentication failed!", "error");
     }
   };
+  
 
   const sendOtp = async () => {
     if (!form.email) {
