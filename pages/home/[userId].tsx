@@ -6,6 +6,7 @@ import { Loader, LogOut, User } from "lucide-react";
 const Dashboard = () => {
   const router = useRouter();
   const { userId } = router.query; 
+  
 
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [loading, setLoading] = useState(true);
